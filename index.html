@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditya Puntambekar — Portfolio</title>
+<meta name="description" content="Aditya Puntambekar — Generative AI, RAG, NLP and neural network engineer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0E14; --bg-deep:#060810; --panel:#10151F; --panel-soft:#151B27;
+  --line:#232B3A; --frame:#2E3850; --ink:#EDF1F7; --ink-soft:#9AA5B8; --ink-faint:#5C6478;
+  --signal:#2FE6A8; --signal-soft:rgba(47,230,168,0.12); --signal-glow:rgba(47,230,168,0.35);
+  --copper:#FF9F5A; --copper-soft:rgba(255,159,90,0.12); --violet:#8B7CF6; --max:940px;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;margin:0;color:var(--ink);letter-spacing:-0.01em;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit;}
+::selection{background:var(--signal-soft);color:var(--signal);}
+a:focus-visible{outline:2px solid var(--signal);outline-offset:3px;}
+
+.grid-bg{position:fixed;inset:0;z-index:-2;background-image:repeating-linear-gradient(0deg, var(--line) 0 1px, transparent 1px 88px),repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 88px);opacity:0.35;pointer-events:none;}
+.glow-orb{position:fixed;z-index:-1;border-radius:50%;filter:blur(90px);pointer-events:none;opacity:0.55;}
+.glow-orb.one{width:520px;height:520px;background:radial-gradient(circle, var(--signal-glow), transparent 70%);top:-180px;left:-140px;}
+.glow-orb.two{width:460px;height:460px;background:radial-gradient(circle, rgba(139,124,246,0.28), transparent 70%);top:40px;right:-160px;}
+.glow-orb.three{width:400px;height:400px;background:radial-gradient(circle, rgba(255,159,90,0.16), transparent 70%);bottom:-140px;left:20%;}
+.frame{max-width:1180px;margin:0 auto;border-left:1px solid var(--frame);border-right:1px solid var(--frame);background:linear-gradient(180deg, rgba(16,21,31,0.4), transparent 400px);}
+
+header{display:flex;align-items:center;justify-content:space-between;padding:22px clamp(20px,4vw,56px);border-bottom:1px solid var(--frame);position:sticky;top:0;background:rgba(9,12,19,0.75);backdrop-filter:blur(14px) saturate(140%);z-index:10;}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);}
+.mark-box{width:30px;height:30px;border:1.5px solid var(--signal);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;color:var(--signal);box-shadow:0 0 16px var(--signal-glow);transition:transform .25s ease;}
+.mark:hover .mark-box{transform:rotate(-8deg) scale(1.06);}
+.mark-name{font-size:14.5px;font-weight:500;}
+nav ul{list-style:none;display:flex;gap:clamp(14px,2.5vw,32px);margin:0;padding:0;font-size:14px;}
+nav a{position:relative;text-decoration:none;color:var(--ink-soft);padding:4px 2px;transition:color .2s ease;}
+nav a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1.5px;background:var(--signal);transition:width .25s ease;box-shadow:0 0 8px var(--signal-glow);}
+nav a:hover{color:var(--ink);}
+nav a:hover::after{width:100%;}
+
+main{padding:0 clamp(20px,4vw,56px);position:relative;}
+section.sheet{max-width:var(--max);margin:0 auto;padding:88px 0 0;position:relative;}
+section.sheet:last-of-type{padding-bottom:96px;}
+.sheet-label{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--signal);letter-spacing:0.06em;margin-bottom:16px;text-transform:uppercase;}
+.sheet-label::before{content:'';width:6px;height:6px;background:var(--signal);border-radius:50%;box-shadow:0 0 10px var(--signal-glow);}
+.sheet h2{font-size:clamp(1.55rem,2.6vw,2.1rem);font-weight:600;margin-bottom:36px;}
+
+.hero{padding-top:72px;}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:nowrap;}
+.hero h1{font-size:clamp(2.4rem, 5.6vw, 4.2rem);line-height:0.98;font-weight:700;max-width:10ch;flex-shrink:1;min-width:0;background:linear-gradient(120deg, var(--ink) 40%, var(--signal) 85%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.titleblock{border:1px solid var(--frame);border-radius:12px;font-size:12px;width:288px;flex-shrink:0;background:rgba(21,27,39,0.6);backdrop-filter:blur(6px);overflow:hidden;box-shadow:0 8px 30px -10px rgba(0,0,0,0.5);}
+.titleblock .row{display:flex;border-bottom:1px solid var(--line);padding:11px 14px;gap:12px;transition:background .2s ease;}
+.titleblock .row:hover{background:rgba(47,230,168,0.05);}
+.titleblock .row:last-child{border-bottom:none;}
+.titleblock .k{color:var(--ink-faint);width:60px;flex-shrink:0;}
+.titleblock .v{color:var(--ink);overflow-wrap:anywhere;min-width:0;}
+.titleblock .v a{text-decoration:none;border-bottom:1px solid var(--frame);transition:color .2s ease, border-color .2s ease;}
+.titleblock .v a:hover{border-color:var(--signal);color:var(--signal);}
+.hero-subtitle{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.15rem,2.2vw,1.5rem);font-weight:500;color:var(--ink);max-width:34ch;margin-top:32px;line-height:1.35;}
+.waveform-wrap{margin:36px 0 8px;width:100%;}
+.waveform-wrap svg{display:block;width:100%;height:auto;}
+.wave-path{fill:none;stroke:var(--signal);stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(0 0 6px var(--signal-glow));}
+@media (prefers-reduced-motion: no-preference){.wave-path{stroke-dasharray:1360;stroke-dashoffset:1360;animation:draw 1.8s ease forwards 0.2s;}}
+@keyframes draw{to{stroke-dashoffset:0;}}
+.hero-summary{max-width:64ch;color:var(--ink-soft);font-size:16px;margin-top:8px;}
+.chip-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:12px;padding:7px 13px;border:1px solid var(--frame);border-radius:999px;color:var(--ink-soft);background:rgba(255,255,255,0.02);transition:border-color .2s ease, color .2s ease, transform .2s ease;}
+.chip:hover{border-color:var(--signal);color:var(--signal);transform:translateY(-2px);}
+
+.spec-table{border-top:1px solid var(--frame);}
+.spec-row{display:grid;grid-template-columns:230px 1fr;gap:24px;padding:20px 4px;border-bottom:1px solid var(--line);border-radius:8px;transition:background .2s ease;}
+.spec-row:hover{background:rgba(47,230,168,0.04);}
+.spec-row .label{font-family:'IBM Plex Mono',monospace;font-size:13.5px;color:var(--signal);padding-top:1px;}
+.spec-row .value{color:var(--ink-soft);font-size:15.5px;}
+
+.project{display:grid;grid-template-columns:104px 1fr;gap:28px;padding:34px 18px;border-bottom:1px solid var(--line);align-items:start;border-radius:14px;transition:background .25s ease, transform .25s ease;}
+.project:hover{background:linear-gradient(120deg, rgba(47,230,168,0.05), rgba(139,124,246,0.04));transform:translateX(4px);}
+.project:first-child{border-top:1px solid var(--frame);}
+.project-id{display:flex;align-items:center;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-faint);padding-top:5px;}
+.dot{width:8px;height:8px;flex-shrink:0;border-radius:50%;}
+.dot.signal{background:var(--signal);box-shadow:0 0 10px var(--signal-glow);}
+.dot.copper{background:var(--copper);box-shadow:0 0 10px rgba(255,159,90,0.45);}
+.dot.violet{background:var(--violet);box-shadow:0 0 10px rgba(139,124,246,0.45);}
+.project h3{font-size:1.3rem;font-weight:600;margin-bottom:8px;}
+.stack{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-faint);margin-bottom:14px;line-height:1.7;}
+.project ul{margin:0;padding:0;list-style:none;color:var(--ink-soft);font-size:15px;}
+.project li{position:relative;padding-left:18px;margin-bottom:8px;}
+.project li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:1.5px;background:var(--signal);}
+.project .links{margin-top:10px;}
+.project .links a{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--signal);text-decoration:none;border-bottom:1px solid var(--signal);}
+
+.ach-list{border-top:1px solid var(--frame);}
+.ach-row{display:grid;grid-template-columns:104px 1fr;gap:28px;padding:26px 18px;border-bottom:1px solid var(--line);align-items:start;border-radius:14px;transition:background .25s ease, transform .25s ease;}
+.ach-row:hover{background:linear-gradient(120deg, rgba(255,159,90,0.06), rgba(47,230,168,0.04));transform:translateX(4px);}
+.ach-row .project-id{padding-top:2px;}
+.ach-row h3{font-size:1.12rem;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.badge{font-family:'IBM Plex Mono',monospace;font-size:10.5px;padding:3px 9px;border-radius:999px;background:var(--signal-soft);color:var(--signal);border:1px solid rgba(47,230,168,0.35);letter-spacing:0.03em;}
+.badge.copper{background:var(--copper-soft);color:var(--copper);border-color:rgba(255,159,90,0.35);}
+.ach-row p{margin:0;color:var(--ink-soft);font-size:15px;}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;border-top:1px solid var(--frame);padding-top:32px;}
+.split .block-label{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--signal);margin-bottom:10px;}
+.split h3{font-size:1.15rem;font-weight:600;margin-bottom:4px;}
+.split p{color:var(--ink-soft);font-size:14.5px;margin:2px 0;}
+
+.contact-grid{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:40px;border-top:1px solid var(--frame);padding-top:36px;}
+.contact-lead p{max-width:42ch;color:var(--ink-soft);font-size:15.5px;}
+.connector{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#06110C;background:linear-gradient(120deg, var(--signal), #7CF0C6);padding:15px 24px;font-size:14.5px;font-weight:600;border-radius:10px;border:1px solid transparent;transition:transform .2s ease, box-shadow .2s ease;box-shadow:0 8px 24px -8px var(--signal-glow);}
+.connector:hover{transform:translateY(-2px);box-shadow:0 12px 30px -6px var(--signal-glow);}
+.connector-pins{display:flex;gap:3px;}
+.connector-pins span{width:3px;height:12px;background:currentColor;opacity:.7;border-radius:1px;}
+.contact-list{font-family:'IBM Plex Mono',monospace;font-size:13.5px;}
+.contact-list .row{display:flex;gap:14px;padding:9px 6px;border-bottom:1px solid var(--line);min-width:280px;border-radius:6px;transition:background .2s ease;}
+.contact-list .row:hover{background:rgba(47,230,168,0.05);}
+.contact-list .k{color:var(--ink-faint);width:70px;flex-shrink:0;}
+.contact-list .v a{text-decoration:none;border-bottom:1px solid var(--frame);transition:color .2s ease, border-color .2s ease;}
+.contact-list .v a:hover{color:var(--signal);border-color:var(--signal);}
+
+footer{border-top:1px solid var(--frame);padding:26px clamp(20px,4vw,56px) 34px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-faint);}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+@media (max-width:760px){
+  nav ul{gap:14px;font-size:13px;}
+  .hero-top{flex-direction:column;flex-wrap:wrap;}
+  .titleblock{width:100%;}
+  .hero h1{max-width:none;}
+  .spec-row{grid-template-columns:1fr;gap:6px;}
+  .project{grid-template-columns:1fr;gap:10px;padding:28px 10px;}
+  .project-id{padding-top:0;}
+  .ach-row{grid-template-columns:1fr;gap:10px;padding:22px 10px;}
+  .split{grid-template-columns:1fr;gap:32px;}
+  .contact-grid{align-items:flex-start;}
+}
+@media (max-width:480px){
+  header{padding:16px 18px;}
+  main{padding:0 18px;}
+  .mark-name{display:none;}
+  nav ul{gap:10px;font-size:12px;}
+}
+</style>
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="glow-orb one" aria-hidden="true"></div>
+<div class="glow-orb two" aria-hidden="true"></div>
+<div class="glow-orb three" aria-hidden="true"></div>
+
+<div class="frame">
+<header>
+  <a href="#top" class="mark"><span class="mark-box mono">AP</span><span class="mark-name">Puntambekar</span></a>
+  <nav aria-label="Section navigation">
+    <ul>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#achievements">achievements</a></li>
+      <li><a href="#education">education</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="sheet hero" id="top">
+    <div class="sheet-label mono">sheet 00 / 05 — profile</div>
+    <div class="hero-top">
+      <h1>Aditya<br>Puntambekar</h1>
+      <div class="titleblock mono">
+        <div class="row"><span class="k">location</span><span class="v">Pune, India</span></div>
+        <div class="row"><span class="k">email</span><span class="v"><a href="mailto:aditya23703@gmail.com">aditya23703@gmail.com</a></span></div>
+        <div class="row"><span class="k">phone</span><span class="v">+91 7208275414</span></div>
+        <div class="row"><span class="k">github</span><span class="v"><a href="https://github.com/Adityapuntambekar" target="_blank" rel="noopener">github.com/Adityapuntambekar</a></span></div>
+        <div class="row"><span class="k">linkedin</span><span class="v"><a href="https://www.linkedin.com/in/aditya-puntambekar-60a779322" target="_blank" rel="noopener">linkedin.com/in/aditya-puntambekar</a></span></div>
+      </div>
+    </div>
+    <p class="hero-subtitle">I build systems that sit between software and silicon — retrieval-augmented AI agents on one end, neural networks and embedded sensor fusion on the other.</p>
+    <div class="waveform-wrap" aria-hidden="true">
+      <svg viewBox="0 0 900 90" preserveAspectRatio="none">
+        <path class="wave-path" d="M0,45 L120,45 L132,10 L144,80 L156,45 L280,45 L292,20 L304,68 L316,45 L440,45 L452,5 L462,85 L472,45 L560,45 L572,25 L582,62 L592,45 L700,45 L712,15 L724,75 L736,45 L900,45"/>
+      </svg>
+    </div>
+    <p class="hero-summary">BSc Data Science student and Generative AI engineer specializing in Retrieval-Augmented Generation, LLM application pipelines, and NLP systems, with applied research in neural networks for real-time perception. Currently looking for an internship applying Generative AI, RAG, and applied ML to production-grade problems.</p>
+    <div class="chip-row">
+      <span class="chip">Generative AI</span>
+      <span class="chip">RAG &amp; NLP</span>
+      <span class="chip">Neural Networks</span>
+      <span class="chip">Federated Learning</span>
+      <span class="chip">Embedded Systems</span>
+    </div>
+  </section>
+
+  <section class="sheet reveal" id="skills">
+    <div class="sheet-label mono">sheet 01 / 05 — skills</div>
+    <h2>Technical skills</h2>
+    <div class="spec-table">
+      <div class="spec-row">
+        <div class="label">generative ai &amp; rag</div>
+        <div class="value">LangGraph, LangChain, Prompt Engineering, Corrective/Agentic RAG, Google Gemini API, OpenAI API, FAISS, BM25, Cross-Encoder Reranking, RAGAS Evaluation, Prompt-Injection Defense</div>
+      </div>
+      <div class="spec-row">
+        <div class="label">neural networks &amp; ml</div>
+        <div class="value">PyTorch, Neural Networks, Neuromorphic Computing, Point-Cloud/LiDAR Processing, Scikit-learn, Federated Learning (Flower/Flwr), Homomorphic Encryption (TenSEAL/CKKS)</div>
+      </div>
+      <div class="spec-row">
+        <div class="label">languages</div>
+        <div class="value">Python, JavaScript, C++, SQL</div>
+      </div>
+      <div class="spec-row">
+        <div class="label">tools &amp; deployment</div>
+        <div class="value">Docker, Streamlit, Gradio, FastAPI, Langfuse, Git/GitHub, VS Code, Google Colab</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet reveal" id="projects">
+    <div class="sheet-label mono">sheet 02 / 05 — projects</div>
+    <h2>Selected projects</h2>
+
+    <div class="project">
+      <div class="project-id"><span class="dot signal"></span>mod.01</div>
+      <div>
+        <h3>FinRAG — Agentic RAG System for Financial Filings</h3>
+        <div class="stack">Python, LangGraph, Google Gemini, FAISS, BM25, Streamlit</div>
+        <ul>
+          <li>Built a retrieval-augmented generation pipeline over Apple and Microsoft SEC 10-K filings using hybrid dense (BGE embeddings + FAISS) and sparse (BM25) retrieval with cross-encoder reranking for higher answer precision.</li>
+          <li>Designed a LangGraph-based corrective RAG loop that self-evaluates retrieved context and re-retrieves on low-confidence answers, reducing hallucination in financial Q&amp;A.</li>
+          <li>Implemented prompt-injection safeguards, semantic response caching, and Langfuse tracing for full pipeline observability, plus a RAGAS-based evaluation harness benchmarking answer faithfulness and relevance.</li>
+          <li>Shipped an interactive Streamlit demo for end-to-end document ingestion, query, and citation-grounded response generation.</li>
+        </ul>
+        <div class="links"><a href="https://github.com/Adityapuntambekar/FinRAG" target="_blank" rel="noopener">view on github →</a></div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-id"><span class="dot violet"></span>mod.02</div>
+      <div>
+        <h3>AVRLM — Neural Network for Real-Time LiDAR Perception</h3>
+        <div class="stack">Python, PyTorch, Spiking Neural Networks, Semantic KITTI, Streamlit</div>
+        <ul>
+          <li>Developing a spiking neural network point-model for radar-LiDAR sensor fusion, achieving 261 FPS on point-cloud inference for real-time autonomous perception.</li>
+          <li>Integrated the Semantic KITTI dataset (21 sequences with calibration and timestamp data) to validate the model on real-world driving scenes up to 100m range, targeting reliability standards for defense-oriented (DRDO) evaluation.</li>
+          <li>Built synthetic LiDAR/radar data generation and a KITTI data-loading pipeline to support semantic training and evaluation alongside real sensor data.</li>
+          <li>Designing a real-time GUI dashboard to visualize spiking-model inference and 3D point-cloud reconstruction; authoring an accompanying research paper.</li>
+        </ul>
+        <div class="links"><a href="https://github.com/Adityapuntambekar/avrlm_dekstop_app" target="_blank" rel="noopener">view on github →</a></div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-id"><span class="dot copper"></span>mod.03</div>
+      <div>
+        <h3>System HELIX — V2X Emergency-Vehicle Path-Clearing Simulator</h3>
+        <div class="stack">Python, Streamlit, Plotly, SAE J2735, Kalman Filters</div>
+        <ul>
+          <li>Prototyped the messaging layer of a V2X emergency-vehicle system, implementing SAE J2735-compliant BSM/SRM message construction and geofenced signal preemption logic ahead of embedded (ESP32) porting.</li>
+          <li>Built a 5-state Extended Kalman Filter sensor-fusion layer, a synthetic route generator, and a mock Roadside Unit (RSU) to simulate real-time vehicle-to-infrastructure communication.</li>
+          <li>Delivered a Streamlit + Plotly dashboard for live geofence and trajectory visualization, backed by 119 passing unit and integration tests.</li>
+        </ul>
+        <div class="links"><a href="https://github.com/Adityapuntambekar/helix-v2x-simulator" target="_blank" rel="noopener">view on github →</a></div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-id"><span class="dot signal"></span>mod.04</div>
+      <div>
+        <h3>FedRare — Privacy-Preserving Federated Learning for Rare-Disease Diagnosis</h3>
+        <div class="stack">Python, PyTorch, Flower (Flwr), TenSEAL (CKKS), Docker</div>
+        <ul>
+          <li>Built a federated learning system training a diagnostic MLP across four simulated hospital nodes on the UCI Cirrhosis Patient Survival dataset without centralizing patient data.</li>
+          <li>Designed a custom HomomorphicFedAvg strategy that aggregates CKKS-encrypted model updates server-side using TenSEAL homomorphic encryption, preserving end-to-end data privacy.</li>
+          <li>Benchmarked encrypted vs. plaintext aggregation, achieving comparable accuracy (~89–92%) while quantifying the privacy-performance trade-off in a Dockerized multi-hospital simulation.</li>
+        </ul>
+        <div class="links"><a href="https://github.com/Adityapuntambekar/fedrare-privacy-preserving-fl" target="_blank" rel="noopener">view on github →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet reveal" id="achievements">
+    <div class="sheet-label mono">sheet 03 / 05 — achievements</div>
+    <h2>Hackathons &amp; competitions</h2>
+    <div class="ach-list">
+      <div class="ach-row">
+        <div class="project-id mono"><span class="dot signal"></span>ach.01</div>
+        <div><h3>AWS Hackathon <span class="badge">finalist</span></h3>
+        <p>Reached the finalist stage in a national-level AWS-sponsored hackathon, building and presenting a cloud-deployed solution under competitive time constraints.</p></div>
+      </div>
+      <div class="ach-row">
+        <div class="project-id mono"><span class="dot copper"></span>ach.02</div>
+        <div><h3>HackMIT <span class="badge copper">participant</span></h3>
+        <p>Participated in HackMIT, collaborating in a team to design and prototype a functional project within a 24–36 hour build window.</p></div>
+      </div>
+      <div class="ach-row">
+        <div class="project-id mono"><span class="dot signal"></span>ach.03</div>
+        <div><h3>IIT Kharagpur Data Science Hackathon <span class="badge">participant</span></h3>
+        <p>Competed in the data science hackathon hosted by IIT Kharagpur, applying data analysis and modeling techniques to solve a real-world problem statement.</p></div>
+      </div>
+      <div class="ach-row">
+        <div class="project-id mono"><span class="dot copper"></span>ach.04</div>
+        <div><h3>Smart India Hackathon (SIH) <span class="badge copper">participant</span></h3>
+        <p>Participated in the Smart India Hackathon, working on a nationally-relevant problem statement as part of a cross-functional team.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet reveal" id="education">
+    <div class="sheet-label mono">sheet 04 / 05 — education</div>
+    <h2>Education &amp; languages</h2>
+    <div class="split">
+      <div>
+        <div class="block-label mono">degree</div>
+        <h3>BSc Data Science and Big Data Analytics (Hons)</h3>
+        <p>2024 - 2027 (Currently pursuing)</p>
+        <p>CGPA 8.6</p>
+      </div>
+      <div>
+        <div class="block-label mono">languages</div>
+        <h3>English</h3>
+        <p>Professional proficiency</p>
+        <h3 style="margin-top:14px">German</h3>
+        <p>A1 certified — targeting B1</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet reveal" id="contact">
+    <div class="sheet-label mono">sheet 05 / 05 — contact</div>
+    <h2>Get in touch</h2>
+    <div class="contact-grid">
+      <div class="contact-lead">
+        <p>Open to internships in Generative AI, RAG systems, or applied NLP — Pune, India or remote.</p>
+        <a class="connector" href="mailto:aditya23703@gmail.com">
+          <span class="connector-pins" aria-hidden="true"><span></span><span></span><span></span></span>
+          Send an email
+        </a>
+      </div>
+      <div class="contact-list">
+        <div class="row"><span class="k">github</span><span class="v"><a href="https://github.com/Adityapuntambekar" target="_blank" rel="noopener">github.com/Adityapuntambekar</a></span></div>
+        <div class="row"><span class="k">linkedin</span><span class="v"><a href="https://www.linkedin.com/in/aditya-puntambekar-60a779322" target="_blank" rel="noopener">linkedin.com/in/aditya-puntambekar</a></span></div>
+        <div class="row"><span class="k">phone</span><span class="v">+91 7208275414</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 Aditya Puntambekar</span>
+  <span>Built as a single static page — no tracking, no dependencies beyond web fonts</span>
+</footer>
+</div>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { els.forEach(function(e){e.classList.add('in');}); return; }
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting){ entry.target.classList.add('in'); obs.unobserve(entry.target); }
+    });
+  }, {threshold:0.12});
+  els.forEach(function(e){ obs.observe(e); });
+})();
+</script>
+</body>
+</html>
